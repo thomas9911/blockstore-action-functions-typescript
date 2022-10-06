@@ -1,0 +1,8 @@
+# dependencies
+/node_modules
+.DS_Store
+
+# is generated 
+functions
+.tmp
+package-lock.json

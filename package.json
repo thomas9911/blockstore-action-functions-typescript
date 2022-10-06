@@ -1,0 +1,28 @@
+{
+  "name": "app-functions",
+  "version": "1.0.0",
+  "dependencies": {
+    "@types/node": "^17.0.9",
+    "lodash": "^4.17.15",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.5.1",
+    "@typescript-eslint/eslint-plugin": "^5.39.0",
+    "@typescript-eslint/parser": "^5.39.0",
+    "copyfiles": "^2.4.1",
+    "eslint": "^8.24.0",
+    "jest": "^28.1.0",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^28.0.3"
+  },
+  "private": "true",
+  "scripts": {
+    "clear": "rimraf ./functions && rimraf ./.tmp",
+    "prep": "npm run clear && copyfiles -u 1 -V ./typescript/**/*.json ./functions",
+    "val": "npm run prep && tsc && npm run test && bb functions validate",
+    "test": "jest",
+    "pub": "npm run val && bb functions publish"
+  }
+}
