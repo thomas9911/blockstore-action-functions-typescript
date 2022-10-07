@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "rootDir": "./typescript",
+    "outDir": "functions",
+    "allowJs": false,
+    "target": "es2017",
+    "moduleResolution": "node",
+    "strict": true,
+    "noImplicitAny": false
+  },
+  "include": ["./typescript/**/*"],
+  "ts-node": {
+    "files": true
+  }
+}
