@@ -1,6 +1,6 @@
 {
-  "description": "Description",
-  "label": "Base 64 Text",
+  "description": "Base64 text encoding/decoding",
+  "label": "Base64",
   "category": "Expression",
   "icon": "LightningIcon",
   "options": [
