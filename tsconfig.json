@@ -6,7 +6,8 @@
     "target": "es2017",
     "moduleResolution": "node",
     "strict": true,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "esModuleInterop": true
   },
   "include": ["./typescript/**/*"],
   "ts-node": {

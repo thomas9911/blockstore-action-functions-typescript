@@ -1,5 +1,7 @@
 import { IResultString } from "../../interfaces/IResult";
 
+const BASE64_CHARS = /^([a-z]|[A-Z]|[0-9]|-|_|=)*$/;
+
 const base64 = async ({ input, action }): Promise<IResultString> => {
   let result: string;
   switch (action) {
@@ -8,20 +10,19 @@ const base64 = async ({ input, action }): Promise<IResultString> => {
         result: Buffer.from(input).toString("base64"),
       };
     case "DECODE":
+      if (!BASE64_CHARS.test(input)) {
+        throw Error("Invalid Base64 string detected.");
+      }
+
       result = Buffer.from(input, "base64").toString();
       if (result) {
-        return {
-          result: Buffer.from(input, "base64").toString(),
-        };
-      } else {
-        throw {
-          error: "Invalid Base64 string detected.",
-        };
+        return { result };
       }
+      throw Error("Invalid Base64 string detected.");
+
     default:
-      throw {
-        error: `Invalid action [${action}] detected.`,
-      };
+      throw Error(`Invalid action [${action}] detected.`);
   }
 };
+
 export default base64;

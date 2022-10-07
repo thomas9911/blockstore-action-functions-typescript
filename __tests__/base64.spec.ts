@@ -21,29 +21,20 @@ test("Base64 decoding returns correctly decoded value", async () => {
   expect(response.result).toBe(DECODED_VALUE);
 });
 
-test("Base64 with incorrect action throws error", async () => {
-  try {
-    await base64({
+test("Base64 with incorrect action throws error", async () =>
+  expect(async () =>
+    base64({
       action: UNKNOWN,
       input: ENCODED_VALUE,
-    });
-  } catch (e) {
-    expect(e).toStrictEqual({
-      error: `Invalid action [${UNKNOWN}] detected.`,
-    });
-  }
-});
+    })
+  ).rejects.toThrow(`Invalid action [${UNKNOWN}] detected.`));
 
 test("Base64 decode with incorrect encoded string throws error", async () => {
-  const RANDOM_TEXT = (Math.random() + 1).toString(36);
-  try {
-    await base64({
+  const RANDOM_TEXT = "this is just some text";
+  return expect(async () =>
+    base64({
       action: "DECODE",
       input: RANDOM_TEXT,
-    });
-  } catch (e) {
-    expect(e).toStrictEqual({
-      error: "Invalid Base64 string detected.",
-    });
-  }
+    })
+  ).rejects.toThrow(`Invalid Base64 string detected.`);
 });

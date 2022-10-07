@@ -1,8 +1,9 @@
 extends:
   - eslint:recommended
+  - airbnb-base
   - plugin:@typescript-eslint/recommended
-  - plugin:react/recommended
   - plugin:jest/recommended
+  - prettier
 parser: "@typescript-eslint/parser"
 plugins:
   - "@typescript-eslint"
@@ -14,10 +15,6 @@ rules:
   no-use-before-define: off
   "@typescript-eslint/no-use-before-define":
     - error
-  react/jsx-filename-extension:
-    - warn
-    - extensions:
-        - .tsx
   complexity:
     - error
     - 10
@@ -25,9 +22,9 @@ rules:
   no-eval: error
   no-implied-eval: error
   prefer-promise-reject-errors: warn
+  import/no-unresolved: 0 # Turn off "Unable to resolve path to module ..." error
+  import/extensions: 0 # Turn off "Missing file extension for ..." error
 env:
   browser: true
   jest/globals: true
-settings:
-  react:
-    pragma: React
+settings: {}
